@@ -10,10 +10,15 @@
 
     // 추가하기 위한 main page로 이동
     function Add_row() {
+      window.location.href = "/";
     }
 
     // 초기화 하고 main page로 이동
     function Home() {
+        // 초기화 해야 하기 때문에, 따로 링크를 fetch할 필요가 있음
+        fetch("/home").then(function () {
+          window.location.href = "/";
+        });
     }
 
   </script>
