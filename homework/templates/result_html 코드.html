@@ -6,6 +6,35 @@
   <script>
 
     function Delete_row() {
+        const D_checkbox = document.getElementsByTagName("input");
+        var rowsToDelete = [];
+
+        for (var i=0; i < D_checkbox.length; i++) {
+          if (D_checkbox[i].checked) {
+            // check된 행
+            const tr = D_checkbox[i].parentNode.parentNode;
+            if (tr.tagName === "TR") {
+              // check된 행의 학번(고유번호여서 key로 사용)
+              const student_number = tr.getElementsByTagName("td")[1].innerText;
+              fetch("/delete", {
+                method: "POST",
+                // json 형태의 문자열로 변환
+                body: JSON.stringify({ student_number: student_number }),
+                // 데이터가 JSON 형식으로 인코딩 됨
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }).then(function () {
+                // 행 제거
+                tr.parentNode.removeChild(tr);
+              });
+            }
+          }
+        }
+
+
+
+
     }
 
     // 추가하기 위한 main page로 이동
