@@ -11,6 +11,17 @@
   </style>
   <script>
     function inf_submit() {
+      const name = document.getElementsByClassName("Required")[0].value;
+      const snumber = document.getElementsByClassName("Required")[1].value;
+      const major = document.getElementsByClassName("Required")[2].value;
+      const email = document.getElementsByClassName("Required")[3].value;
+      const email_domain = document.getElementsByClassName("Required")[4].value;
+
+      if (!name || !snumber || !major || !email || email_domain == '') {
+        alert("필수 정보를 다 입력해 주세요.");
+        return false;
+      }
+      return true;
     }
   </script>
 </head>
